@@ -1,19 +1,35 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of markenzoo/contao-animate-on-scroll-bundle.
+ *
+ * Copyright (c) Felix Kästner
+ *
+ * @package   markenzoo/contao-animate-on-scroll-bundle
+ * @author    Felix Kästner <hello@felix-kaestner.com>
+ * @copyright 2020 Felix Kästner
+ * @license   https://github.com/markenzoo/contao-animate-on-scroll-bundle/blob/main/LICENSE MIT
+ */
+
 namespace Markenzoo\ContaoAnimateOnScrollBundle\EventListener\ContentElement;
 
-use Contao\CoreBundle\ServiceAnnotation\Hook;
-use Contao\ContentElement;
 use Contao\ContentModel;
+use Contao\CoreBundle\ServiceAnnotation\Hook;
 
 /**
  * @Hook("getContentElement")
  */
 class GetContentElementListener
 {
+    /**
+     * @psalm-suppress UndefinedMethod
+     * @psalm-suppress UndefinedConstant
+     */
     public function __invoke(ContentModel $contentModel, string $buffer, $element): string
     {
-        if (TL_MODE == 'FE' ) {
+        if (TL_MODE === 'FE') {
             if ($contentModel->addAOS) {
                 $doc = new \DOMDocument();
                 $doc->loadHTML($buffer);
@@ -29,7 +45,7 @@ class GetContentElementListener
                 $buffer = $doc->saveHTML($domElement);
             }
         }
-        
+
         return $buffer;
     }
 }

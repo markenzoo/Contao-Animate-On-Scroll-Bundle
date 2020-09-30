@@ -13,6 +13,14 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+    <issueHandlers>
+        <UndefinedMagicPropertyAssignment errorLevel="suppress" />
+        <UndefinedMagicPropertyFetch errorLevel="suppress" />
+    </issueHandlers>
+    <plugins>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin"/>
+    </plugins>
     <stubs>
         <file name="vendor/contao/core-bundle/src/Resources/contao/config/constants.php" />
         <file name="vendor/contao/core-bundle/src/Resources/contao/helper/functions.php" />

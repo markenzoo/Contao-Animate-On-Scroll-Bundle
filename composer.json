@@ -33,6 +33,8 @@
     "friendsofphp/php-cs-fixer": "^2.0",
     "phpunit/phpunit": "^8.5",
     "symfony/phpunit-bridge": "^4.4",
+    "psalm/plugin-phpunit": "^0.10",
+    "psalm/plugin-symfony": "^1.0",
     "vimeo/psalm": "^3.9"
   },
   "extra": {
