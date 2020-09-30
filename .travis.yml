@@ -1,9 +1,10 @@
+ 525 Bytes
+IntelliJ IDEAPhpStorm   
 dist: bionic
 
 language: php
 
 php:
-  - "7.1"
   - "7.2"
   - "7.3"
   - "7.4"
@@ -11,24 +12,15 @@ php:
 env:
   - CONTAO_VERSION=4.9
 
-matrix:
-  allow_failures:
-    - php: "7.1"
-
-jobs:
-  exclude:
-  - php: "7.1"
-    env: CONTAO_VERSION=4.9
-
 before_script:
   - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - travis_retry composer self-update && composer --version
   - travis_retry composer require contao/core-bundle:$CONTAO_VERSION --no-update
-  - travis_retry composer update --prefer-dist --no-interaction --no-suggest
+  - travis_retry composer install --prefer-dist --no-interaction --no-suggest
 
 script: 
-  - vendor/bin/phpunit
-  - vendor/bin/psalm
+  - composer run-script test
+  - composer run-script lint
 
 cache:
   directories:
