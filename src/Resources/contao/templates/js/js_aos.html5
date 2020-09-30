@@ -1,0 +1,5 @@
+<?php
+$GLOBALS['TL_HEAD'][] = \Contao\Template::generateStyleTag('bundles/contaoanimateonscroll/css/aos.css', 'screen', null);
+$GLOBALS['TL_BODY'][] = \Contao\Template::generateScriptTag('bundles/contaoanimateonscroll/js/aos.js', false, null);
+$GLOBALS['TL_BODY'][] = \Contao\Template::generateInlineScript('document.addEventListener("DOMContentLoaded",function(){AOS.init();});');
+?>
