@@ -32,8 +32,8 @@ class GetContentElementListener
         if (TL_MODE === 'FE') {
             if ($contentModel->addAOS) {
                 $doc = new \DOMDocument();
-                $doc->loadHTML($buffer);
-                $domElement = $doc->documentElement /* html */ ->firstChild /* body */ ->firstChild /* [class^="ce_"] */;
+                $doc->loadHTML('<?xml encoding="utf-8" ?>' . $buffer, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+                $domElement = $doc->documentElement;
                 $domElement->setAttribute('data-aos', $contentModel->aos);
                 $domElement->setAttribute('data-aos-offset', $contentModel->aosOffset);
                 $domElement->setAttribute('data-aos-delay', $contentModel->aosDelay);
